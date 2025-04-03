@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video con Redirección</title>
+    <script src="https://player.vimeo.com/api/player.js"></script>
+    <script>
+        let redirigido = false;
+
+        function redirigir() {
+            if (!redirigido) {
+                redirigido = true;
+                window.location.href = "https://acortar.link/k484Zj";
+            }
+        }
+
+        function checkVideoEnd() {
+            var iframe = document.getElementById('videoFrame');
+            var player = new Vimeo.Player(iframe);
+            
+            // Redirigir cuando termine el video
+            player.on('ended', function() {
+                redirigir();
+            });
+
+            // Redirigir si alguien toca el video
+            iframe.addEventListener("click", function() {
+                redirigir();
+            });
+        }
+    </script>
+    <style>
+        body {
+            margin: 0;
+            background-color: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+    </style>
+</head>
+<body onclick="redirigir()">
+    <iframe id="videoFrame" 
+        src="https://player.vimeo.com/video/1072154515?h=512064be6a" 
+        width="640" height="360" frameborder="0" allowfullscreen onload="checkVideoEnd()">
+    </iframe>
+</body>
+</html>
